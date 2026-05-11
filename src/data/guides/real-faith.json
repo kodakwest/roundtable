@@ -1,0 +1,43 @@
+{
+  "id": "real-faith",
+  "title": "Real Faith",
+  "series": "Luke",
+  "date": "2026-02-15",
+  "scriptureMap": "Luke 7:1-10 · Luke 7:11-16 · Luke 7:17-23",
+  "anchorVerse": {
+    "reference": "Luke 7:23",
+    "text": "Blessed is the man who does not fall away on account of me."
+  },
+  "theme": "Faith doesn't come in one size. Whether you're believing big, grieving hard, or doubting in the dark, Jesus meets you where you are.",
+  "framingSentence": "Faith isn't a formula that guarantees outcomes. It's trust in a person even when the outcome doesn't make sense.",
+  "sections": [
+    {
+      "title": "The Centurion — Great Faith",
+      "context": "A Roman officer — outsider, military guy, not raised in the faith — and Jesus says he has the most faith in all of Israel. Why? Two things: humility and authority. The centurion knew he didn't deserve anything from Jesus, and he understood that Jesus had power over sickness the same way he had authority over his soldiers.",
+      "questions": [
+        { "id": "rf-q1", "prompt": "There's a brand of 'faith' circulating that's really New Age thinking with Bible verses mixed in — where you claim power through your own words instead of trusting God's authority. Have you ever caught yourself thinking your faith was the deciding factor instead of Jesus' power? What's the difference?" },
+        { "id": "rf-q2", "prompt": "The centurion was humble and confident. How do you hold both of those at the same time without tipping into false humility on one side or overconfidence on the other?" }
+      ]
+    },
+    {
+      "title": "The Widow of Nain — No Faith",
+      "context": "A widow loses her only son — her last source of security, identity, and provision. She's not asking Jesus for anything. She's not even aware he's there. And Jesus raises her son anyway. No faith required. This is pure compassion — Jesus didn't need her to pass a belief test first. He saw her pain and acted.",
+      "questions": [
+        { "id": "rf-q3", "prompt": "Think of a time when Jesus showed up in a situation where you didn't even have the strength to ask. What happened?" },
+        { "id": "rf-q4", "prompt": "'Jesus cares about the things you care about.' Do you actually believe that? What would change if you lived like it was true?" }
+      ]
+    },
+    {
+      "title": "John the Baptist — Doubting Faith",
+      "context": "John baptized Jesus. He saw the Holy Spirit descend. He knew Jesus was the Messiah. And then he ended up in prison with his head on the line while Jesus was healing everybody else. So he sent his disciples to ask, 'Are you the one, or should we expect someone else?' Doubt doesn't mean you don't believe. It means you're suffering and you're honest about it.",
+      "questions": [
+        { "id": "rf-q5", "prompt": "Which of these three stories do you identify with right now: the centurion with great faith, the widow just trying to survive, or John in prison wondering where God went?" },
+        { "id": "rf-q6", "prompt": "'Blessed is the one who does not fall away on account of me.' That's Jesus saying, 'Don't let what you don't understand cost you what you do know.' What's one thing you know to be true about God even when your circumstances don't line up?" }
+      ]
+    }
+  ],
+  "landing": {
+    "paragraph": "John the Baptist had all the theology right and still ended up beheaded. Faith isn't a formula that guarantees outcomes. It's trust in a person even when the outcome doesn't make sense.",
+    "finalQuestion": "The widow of Nain didn't ask for anything. The centurion believed from a distance. John doubted from a prison cell. Where are you really at with Jesus right now — and what would it look like to be honest with him about it this week?"
+  }
+}

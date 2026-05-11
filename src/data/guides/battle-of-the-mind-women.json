@@ -1,0 +1,43 @@
+{
+  "id": "battle-of-the-mind-women",
+  "title": "Battle of the Mind — Women",
+  "series": "Battle of the Mind",
+  "date": "2026-05-10",
+  "scriptureMap": "1 Timothy 1:18-19, 2:1-15 · Galatians 3:28 · Matthew 19:4 · Proverbs 11:22 · Romans 16:7",
+  "anchorVerse": {
+    "reference": "1 Timothy 1:18-19",
+    "text": "I am giving you this command... so that by recalling them you may fight the battle well, holding on to faith and a good conscience."
+  },
+  "theme": "Equal in worth, distinct in design. God's word restores women to dignity.",
+  "framingSentence": "The battle for women's identity is real, and it must be fought with faith and a clear conscience — not by the culture's rules, but by God's.",
+  "sections": [
+    {
+      "title": "Equal Value, NOT Equal",
+      "context": "Galatians 3:28 affirms spiritual equality. Matthew 19:4 affirms male and female as part of creation. Equal worth does not mean identical roles — the distinction is by design, not hierarchy.",
+      "questions": [
+        { "id": "btmw-q1", "prompt": "The culture says if you are not identical, you are not equal. Where do you feel this pressure most?" },
+        { "id": "btmw-q2", "prompt": "Female suicide is up 50% since 2000 and life satisfaction dropped as workforce participation rose. Does that change how you think about what women actually need?" }
+      ]
+    },
+    {
+      "title": "Propriety, NOT Rebellion",
+      "context": "1 Timothy 2:9-10 — Paul's words about modest dress are often read as restrictions, but the context changes everything: Ephesus was the center of Artemis worship, where seductive clothing was part of religious practice. Paul is disentangling Christian women from that cult identity, not imposing a universal ban. The goal is dignity, not silence.",
+      "questions": [
+        { "id": "btmw-q3", "prompt": "Paul called women out of Artemis worship, not out of leadership. What is our culture's 'Artemis' — the identity markers it pressures women to wear or display?" },
+        { "id": "btmw-q4", "prompt": "'A gold ring in a pig's snout' (Proverbs 11:22). Where is the culture asking women to put their worth in the wrong place?" }
+      ]
+    },
+    {
+      "title": "Useful, NOT Sidelined",
+      "context": "The same Paul who wrote 1 Timothy also named Junias an apostle, Phoebe a deacon, and Priscilla a teacher. Women led. The question is not whether women can lead, but how they lead in a way that honors their design.",
+      "questions": [
+        { "id": "btmw-q5", "prompt": "Think of a woman who shaped your faith. What did she teach you that no one else could?" },
+        { "id": "btmw-q6", "prompt": "Does your church treat women as useful to the mission or sidelined from it? Where could that improve?" }
+      ]
+    }
+  ],
+  "landing": {
+    "paragraph": "Paul's words in 1 Timothy 2 aren't a burden — they're a rescue mission, calling women back to dignity. The culture defines women by liberation; the church has too often defined them by limitation. Neither is the battle Paul calls us to fight in 1 Timothy 1:18-19. The biblical picture is better: equal worth, distinct design, essential to the mission. Holding on to faith and a good conscience means rejecting both false narratives.",
+    "finalQuestion": "Where do you need to admit you need help — from God, from the women in your life, or from your church — to see and honor women the way Scripture does, not the way the culture does?"
+  }
+}

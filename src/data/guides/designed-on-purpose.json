@@ -1,0 +1,43 @@
+{
+  "id": "designed-on-purpose",
+  "title": "Designed — On Purpose",
+  "series": "Designed",
+  "date": "2020-01-05",
+  "scriptureMap": "Psalm 139:13-14 · Genesis 1:26-27 · 1 Corinthians 6:19 · Ephesians 2:10 · Psalm 139:1-24",
+  "anchorVerse": {
+    "reference": "Psalm 139:13-14",
+    "text": "For you created my inmost being; you knit me together in my mother's womb. I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well."
+  },
+  "theme": "You are not an accident. God created you on purpose, in His image, for a purpose.",
+  "framingSentence": "Middle schoolers carry anxiety that would have been institutionalized in the 1950s. Teen suicide rates up 56% in a decade. The prevailing message to young people is that they are accidents of nature with no purpose.",
+  "sections": [
+    {
+      "title": "God Created You",
+      "context": "Psalm 139:13-14 and Genesis 1:26-27 — If you remove the Creator, you devalue the creation. A painting's value depends on who made it. The philosopher Quentin Smith put it bluntly: 'the most reasonable belief is that we came from nothing, by nothing and for nothing.' That worldview leaves no foundation for meaning or purpose. But the opening pages of Scripture say something radically different — you carry the image of the invisible God.",
+      "questions": [
+        { "id": "dop-q1", "prompt": "The culture tells young people they are cosmic accidents. How does that belief shape a person's sense of worth, their decisions, their future?" },
+        { "id": "dop-q2", "prompt": "'Your body is a work of art from God' — what would change in how you treat your body if you truly believed you carry the image of God?" }
+      ]
+    },
+    {
+      "title": "Embrace His Design",
+      "context": "Ephesians 2:10 — 'For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.' Sin damages the image of God in us. It doesn't destroy it, but it distorts it. The answer isn't to justify the brokenness — it's to let God recreate you. Embracing God's design means accepting that He made you the way you are on purpose, not by accident.",
+      "questions": [
+        { "id": "dop-q3", "prompt": "'God doesn't make mistakes' — what part of your identity or story feels hardest to believe that about right now?" },
+        { "id": "dop-q4", "prompt": "A platypus doesn't fit any mold — mammal that lays eggs, duck bill, beaver tail. Yet it exists exactly as designed. Where have you felt pressure to fit a mold that wasn't made for you?" }
+      ]
+    },
+    {
+      "title": "Live as Image Bearers",
+      "context": "1 Corinthians 6:19 — 'Do you not know that your bodies are temples of the Holy Spirit, who is in you?' Psalm 139:23-24 — 'Search me, God, and know my heart; test me and know my anxious thoughts.' The call is to be a 'Daniel Generation' — people who remain faithful whether they face the fire or the lion's den.",
+      "questions": [
+        { "id": "dop-q5", "prompt": "If someone lives like they're a cosmic accident, how does that show up in their choices — with their body, their time, their relationships?" },
+        { "id": "dop-q6", "prompt": "'Will you commit to relationship with Him until that image is revealed?' — what's one way you can actively lean into that commitment this week?" }
+      ]
+    }
+  ],
+  "landing": {
+    "paragraph": "Psalm 139:13-14 opens with the raw declaration that we are 'fearfully and wonderfully made.' But that's not just a feel-good line — it's a claim about reality. If God created us, then we have a Creator, a design, and a purpose. The crisis of anxiety, addiction, and despair in our culture isn't a mystery — it's the logical result of telling people they're meaningless accidents. The answer isn't more self-esteem tips. It's returning to the truth that we were made by Someone, for Someone — that our bodies carry His image and are temples of His Spirit. The Daniel Generation lives like that's real, even when the fire is hot.",
+    "finalQuestion": "What would change in your life this week if you woke up every morning and said, 'God made me on purpose, for a purpose' — and actually believed it?"
+  }
+}

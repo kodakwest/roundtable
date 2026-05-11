@@ -1,0 +1,43 @@
+{
+  "id": "armor-for-the-mind",
+  "title": "Armor for the Mind — Truth in a World of Deception",
+  "series": "Battle of the Mind",
+  "date": "2026-03-01",
+  "scriptureMap": "2 Corinthians 10:3-5 · Ephesians 6:11-18 · 1 Timothy 1:18-20 · 2 Timothy 4:2-5 · Romans 8:6 · James 1:12",
+  "anchorVerse": {
+    "reference": "2 Corinthians 10:3-5",
+    "text": "For though we live in the flesh, we do not war according to the flesh. For the weapons we fight with are not the weapons of the world. On the contrary, they have divine power to demolish strongholds. We demolish arguments and every pretension that sets itself up against the knowledge of God, and we take captive every thought to make it obedient to Christ."
+  },
+  "theme": "The battle for the mind is real, and the only armor that holds is God's truth.",
+  "framingSentence": "Truth has become negotiable — algorithms feed us what confirms our biases, and information moves faster than verification.",
+  "sections": [
+    {
+      "title": "The Armor of Truth",
+      "context": "2 Corinthians 10:4-5 — The weapons of our warfare are not worldly but have divine power to demolish strongholds. We take every thought captive to make it obedient to Christ. 1 Timothy 1:18-19 calls us to 'fight the battle well, holding on to faith and a good conscience.' Before we can stand against deception, we must recognize how our minds are being shaped — by algorithms, by political narratives, by content designed to provoke rather than inform.",
+      "questions": [
+        { "id": "atm-q1", "prompt": "Where do you see this happening in your own information diet — news, social media, workplace?" },
+        { "id": "atm-q2", "prompt": "'Taking every thought captive' is active, not passive. What would that look like today — before you click, before you share, before you react?" }
+      ]
+    },
+    {
+      "title": "Integrity Over Image",
+      "context": "1 Timothy 3:1-7, Titus 1:5-9 — Leaders must be above reproach, not lovers of money, not quick-tempered, holding fast to sound teaching. The gap between public image and private reality isn't just hypocrisy — it's a spiritual deception that conditions us to believe lies.",
+      "questions": [
+        { "id": "atm-q3", "prompt": "When have you seen a gap between someone's public image and private reality? How did that affect your trust — not just in them, but in the systems or institutions they represented?" },
+        { "id": "atm-q4", "prompt": "'If a leader won't tell the truth about themselves, how can they be trusted with truth about anything else?' Where do you need to check your own integrity gap?" }
+      ]
+    },
+    {
+      "title": "Wisdom Over Noise",
+      "context": "1 Corinthians 2:10-16, Romans 12:1-2 — The Spirit searches all things, even the deep things of God. Do not be conformed to this world, but be transformed by the renewing of your mind. We cannot outsource discernment to algorithms. Spiritual wisdom is personal — it comes from knowing God, not from processing more data.",
+      "questions": [
+        { "id": "atm-q5", "prompt": "When have you felt the pull to let someone else (an algorithm, a news channel, a political tribe) do your thinking for you?" },
+        { "id": "atm-q6", "prompt": "'Do not be conformed' suggests pressure is constant. What would it look like to intentionally renew your mind this week — not just consume less, but replace noise with something truer?" }
+      ]
+    }
+  ],
+  "landing": {
+    "paragraph": "Four passages were laid out at the start — 2 Corinthians 10, Ephesians 6, 1 Timothy 1, 2 Timothy 4 — but they're really one battle plan: the mind is the frontline, and truth is the only weapon that holds. Paul's charge to Timothy in 2 Timothy 4 — 'preach the word, be ready in season and out of season' — is the same charge we get today, not as preachers but as people who must decide what's real before we can decide what's right. The armor doesn't fit if we're not willing to put it on daily.",
+    "finalQuestion": "Where in your life have you been sleepwalking — letting the world decide what's true for you — and what would it look like to wake up tomorrow?"
+  }
+}

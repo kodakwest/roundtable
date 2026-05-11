@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #020617;
+    color: #e2e8f0;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 0.5in;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-guide {
+    color: #111827;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  .print-guide h1 {
+    font-size: 22pt;
+    line-height: 1.1;
+    margin: 0 0 0.08in;
+  }
+
+  .print-guide h2 {
+    border-top: 1px solid #9ca3af;
+    font-size: 14pt;
+    margin: 0.18in 0 0.06in;
+    padding-top: 0.12in;
+  }
+
+  .print-guide h3 {
+    font-size: 12pt;
+    margin: 0.12in 0 0.04in;
+  }
+
+  .print-guide p {
+    margin: 0 0 0.08in;
+  }
+
+  .print-guide blockquote {
+    border-left: 4px solid #0891b2;
+    margin: 0.16in 0;
+    padding: 0.04in 0 0.04in 0.14in;
+  }
+
+  .print-guide ol {
+    margin: 0.06in 0 0;
+    padding-left: 0.22in;
+  }
+
+  .print-guide li {
+    margin-bottom: 0.05in;
+  }
+
+  .print-guide .print-meta {
+    color: #4b5563;
+    font-size: 10pt;
+    margin-bottom: 0.08in;
+  }
+
+  .print-guide .print-final {
+    border: 1px solid #9ca3af;
+    margin-top: 0.12in;
+    padding: 0.12in;
+  }
+}
