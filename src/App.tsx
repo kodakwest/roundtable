@@ -107,16 +107,16 @@ function AuthenticatedApp() {
 
       <div className="flex min-h-0 flex-1 flex-col">
         {/* Header */}
-        <header className="border-b border-slate-800 px-4 py-4 sm:px-6">
+        <header className="border-b border-[var(--border-subtle)] bg-[var(--bg-base)] px-4 py-4 sm:px-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-lg font-bold text-slate-100">Roundtable</h1>
-              <p className="text-xs text-slate-500">Sermon Discussion Guides</p>
+              <h1 className="text-lg font-bold text-[var(--ink-primary)]">Roundtable</h1>
+              <p className="text-xs text-[var(--ink-tertiary)]">Sermon Discussion Guides</p>
             </div>
             {selectedGuide && (
               <button
                 onClick={handlePrint}
-                className="screen-only flex items-center gap-1.5 rounded-lg border border-slate-800 px-3 py-1.5 text-xs text-slate-400 transition-all hover:border-cyan-300/50 hover:text-cyan-300 active:scale-95"
+                className="screen-only flex items-center gap-1.5 rounded-lg border border-[var(--border-subtle)] px-3 py-1.5 text-xs text-[var(--ink-secondary)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95"
               >
                 Print Guide
               </button>
@@ -148,11 +148,11 @@ function AuthenticatedApp() {
             {/* Guide list */}
             <div className="min-h-0 flex-1 space-y-2 overflow-y-auto">
               {isLoading ? (
-                <p className="py-8 text-center text-sm text-slate-600">
+                <p className="py-8 text-center text-sm text-[var(--ink-tertiary)]">
                   Loading guides...
                 </p>
               ) : filteredGuides.length === 0 ? (
-                <p className="py-8 text-center text-sm text-slate-600">
+                <p className="py-8 text-center text-sm text-[var(--ink-tertiary)]">
                   No guides match your search.
                 </p>
               ) : (
@@ -175,7 +175,7 @@ function AuthenticatedApp() {
               <GuideView guide={selectedGuide} />
             ) : (
               <div className="flex flex-1 items-center justify-center">
-                <p className="text-center text-sm text-slate-600">
+                <p className="text-center text-sm text-[var(--ink-tertiary)]">
                   Select a guide to view
                 </p>
               </div>
@@ -191,8 +191,8 @@ function AuthLoading() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0b0d0e] text-[#e8e6e1]">
       <div className="flex flex-col items-center gap-4">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#2a2d31] border-t-[#d4af37]" />
-        <div className="font-serif text-xl font-bold text-[#d4af37]">LogOS</div>
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#2a2d31] border-t-[#4da8da]" />
+        <div className="font-serif text-xl font-bold text-[#4da8da]">Roundtable</div>
       </div>
     </div>
   );

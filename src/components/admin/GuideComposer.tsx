@@ -104,7 +104,7 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
           <button
             type="button"
             onClick={onCancel}
-            className="flex items-center gap-2 rounded-lg border border-slate-700 px-3 py-2 text-sm text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+            className="flex items-center gap-2 rounded-lg border border-[#2a2d31] px-3 py-2 text-sm text-[#a0a0a5] transition hover:border-[#4da8da]/60 hover:text-[#4da8da]"
           >
             <ArrowLeft size={16} />
             Back
@@ -113,7 +113,7 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
             type="button"
             onClick={handleParse}
             disabled={isParsing}
-            className="flex items-center gap-2 rounded-lg bg-cyan-300 px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex items-center gap-2 rounded-lg bg-[#4da8da] px-3 py-2 text-sm font-semibold text-[#e8e6e1] transition hover:bg-[#4da8da]/90 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <Wand2 size={16} />
             {isParsing ? "Parsing..." : "Parse & Preview"}
@@ -123,12 +123,12 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
         <textarea
           value={markdown}
           onChange={(event) => setMarkdown(event.target.value)}
-          className="h-[calc(100vh-170px)] min-h-[420px] w-full resize-none rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 font-mono text-sm leading-6 text-slate-200 outline-none transition focus:border-cyan-300"
+          className="h-[calc(100vh-170px)] min-h-[420px] w-full resize-none rounded-lg border border-[#2a2d31] bg-[#0b0d0e] px-4 py-3 font-mono text-sm leading-6 text-[#e8e6e1] outline-none transition focus:border-[#4da8da]"
           placeholder="# Discussion Guide: ..."
         />
       </div>
 
-      <div className="min-h-0 overflow-y-auto rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+      <div className="min-h-0 overflow-y-auto rounded-lg border border-[#2a2d31] bg-[#131618]/40 p-4">
         {error && (
           <div className="mb-4 rounded-lg border border-red-400/30 bg-red-400/10 px-3 py-2 text-sm text-red-200">
             {error}
@@ -141,16 +141,16 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
         )}
 
         {!guide ? (
-          <div className="flex min-h-[420px] items-center justify-center text-center text-sm text-slate-500">
+          <div className="flex min-h-[420px] items-center justify-center text-center text-sm text-[#6e6e73]">
             Parsed guide fields will appear here.
           </div>
         ) : (
           <div className="space-y-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2d31] pb-4">
               <div>
-                <h2 className="text-lg font-semibold text-slate-100">Editable Preview</h2>
+                <h2 className="text-lg font-semibold text-[#e8e6e1]">Editable Preview</h2>
                 {confidence !== null && (
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-[#6e6e73]">
                     Confidence: {Math.round(confidence * 100)}%
                   </p>
                 )}
@@ -159,7 +159,7 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
                 type="button"
                 onClick={handleSave}
                 disabled={isSaving}
-                className="flex items-center gap-2 rounded-lg bg-emerald-300 px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex items-center gap-2 rounded-lg bg-emerald-300 px-3 py-2 text-sm font-semibold text-[#e8e6e1] transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Save size={16} />
                 {isSaving ? "Saving..." : "Save Guide"}
@@ -214,9 +214,9 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
             />
 
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">Sections</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-[#a0a0a5]">Sections</h3>
               {guide.sections.map((section, sectionIndex) => (
-                <div key={`${section.title}-${sectionIndex}`} className="rounded-lg border border-slate-800 p-3">
+                <div key={`${section.title}-${sectionIndex}`} className="rounded-lg border border-[#2a2d31] p-3">
                   <Field
                     label="Section title"
                     value={section.title}
@@ -243,8 +243,8 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
               ))}
             </div>
 
-            <div className="rounded-lg border border-slate-800 p-3">
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">Landing</h3>
+            <div className="rounded-lg border border-[#2a2d31] p-3">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-[#a0a0a5]">Landing</h3>
               <Field
                 label="Landing paragraph"
                 value={guide.landing.paragraph}
@@ -267,14 +267,14 @@ export default function GuideComposer({ onCancel, onSaved }: Props) {
 
 function Field({ label, value, onChange, multiline }: FieldProps) {
   const className =
-    "mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-cyan-300";
+    "mt-1 w-full rounded-lg border border-[#2a2d31] bg-[#0b0d0e] px-3 py-2 text-sm text-[#e8e6e1] outline-none transition focus:border-[#4da8da]";
 
   function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     onChange(event.target.value);
   }
 
   return (
-    <label className="mb-3 block text-sm font-medium text-slate-300">
+    <label className="mb-3 block text-sm font-medium text-[#a0a0a5]">
       {label}
       {multiline ? (
         <textarea value={value} onChange={handleChange} rows={3} className={`${className} resize-y`} />

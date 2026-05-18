@@ -11,7 +11,7 @@ export default function Admin() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--ink-primary)]">
       {hasKey ? <AdminDashboard onLogout={() => setHasKey(false)} /> : <AdminLogin onLogin={() => setHasKey(true)} />}
     </div>
   );

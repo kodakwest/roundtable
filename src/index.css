@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --bg-base: #0b0d0e;
+    --bg-panel: #131618;
+    --bg-elevated: #1a1d21;
+    --ink-primary: #e8e6e1;
+    --ink-secondary: #a0a0a5;
+    --ink-tertiary: #6e6e73;
+    --border-subtle: #2a2d31;
+    --border-focus: #3d4148;
+    --accent: #4da8da;
+    --accent-muted: rgba(77, 168, 218, 0.16);
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+  }
+
   html,
   body,
   #root {
@@ -10,12 +26,19 @@
   }
 
   body {
-    background: #020617;
-    color: #e2e8f0;
+    background: var(--bg-base);
+    color: var(--ink-primary);
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: 0;
   }
 
   button,
-  input {
+  input,
+  textarea {
     font: inherit;
   }
 }
