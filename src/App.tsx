@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import { useRoundtableStore } from "./store/useRoundtableStore";
-import { getGuideById } from "./lib/guideData";
 import { checkAuth, redirectToLogin } from "./lib/authCheck";
+import Admin from "./pages/Admin";
 import SearchBar from "./components/controls/SearchBar";
 import SeriesFilter from "./components/controls/SeriesFilter";
 import GuideCard from "./components/guides/GuideCard";
@@ -10,6 +10,14 @@ import GuideView from "./components/guides/GuideView";
 import PrintGuide from "./components/PrintGuide";
 
 export default function App() {
+  if (window.location.pathname.startsWith("/admin")) {
+    return <Admin />;
+  }
+
+  return <PublicApp />;
+}
+
+function PublicApp() {
   const [authState, setAuthState] = useState<"loading" | "authenticated" | "unauthenticated">("loading");
 
   useEffect(() => {
@@ -30,14 +38,28 @@ export default function App() {
 
 function AuthenticatedApp() {
   const guides = useRoundtableStore((s) => s.guides);
+  const isLoading = useRoundtableStore((s) => s.isLoading);
   const view = useRoundtableStore((s) => s.view);
   const selectedGuideId = useRoundtableStore((s) => s.selectedGuideId);
   const searchQuery = useRoundtableStore((s) => s.searchQuery);
   const selectedSeries = useRoundtableStore((s) => s.selectedSeries);
+  const loadGuides = useRoundtableStore((s) => s.loadGuides);
   const setView = useRoundtableStore((s) => s.setView);
   const selectGuide = useRoundtableStore((s) => s.selectGuide);
 
-  const selectedGuide = selectedGuideId ? getGuideById(selectedGuideId) : null;
+  const selectedGuide = selectedGuideId ? guides.find((guide) => guide.id === selectedGuideId) : null;
+
+  useEffect(() => {
+    void loadGuides();
+  }, [loadGuides]);
+
+  useEffect(() => {
+    const guideId = new URLSearchParams(window.location.search).get("guide");
+    if (guideId && guides.some((guide) => guide.id === guideId)) {
+      selectGuide(guideId);
+      setView("guide");
+    }
+  }, [guides, selectGuide, setView]);
 
   // Filter guides
   const filteredGuides = useMemo(() => {
@@ -70,6 +92,7 @@ function AuthenticatedApp() {
   function handleSelectGuide(id: string) {
     selectGuide(id);
     setView("guide");
+    window.history.replaceState(null, "", `/?guide=${encodeURIComponent(id)}`);
   }
 
   // Print: Ctrl+P or window.print() triggered by button
@@ -124,7 +147,11 @@ function AuthenticatedApp() {
 
             {/* Guide list */}
             <div className="min-h-0 flex-1 space-y-2 overflow-y-auto">
-              {filteredGuides.length === 0 ? (
+              {isLoading ? (
+                <p className="py-8 text-center text-sm text-slate-600">
+                  Loading guides...
+                </p>
+              ) : filteredGuides.length === 0 ? (
                 <p className="py-8 text-center text-sm text-slate-600">
                   No guides match your search.
                 </p>

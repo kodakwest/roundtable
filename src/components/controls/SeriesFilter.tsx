@@ -3,9 +3,10 @@ import { useRoundtableStore } from "../../store/useRoundtableStore";
 import { getSeriesList } from "../../lib/guideData";
 
 export default function SeriesFilter() {
+  const guides = useRoundtableStore((s) => s.guides);
   const selectedSeries = useRoundtableStore((s) => s.selectedSeries);
   const setSelectedSeries = useRoundtableStore((s) => s.setSelectedSeries);
-  const seriesList = getSeriesList();
+  const seriesList = getSeriesList(guides);
 
   return (
     <div className="flex flex-wrap gap-1.5">

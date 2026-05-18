@@ -1,4 +1,5 @@
 import type { Guide, SeriesMeta } from "../types/guide";
+import { fetchGuides } from "./api";
 
 import battleOfTheMindWomen from "../data/guides/battle-of-the-mind-women.json";
 import realFaith from "../data/guides/real-faith.json";
@@ -17,7 +18,15 @@ const guideFiles = [
 const guides: Guide[] = guideFiles.map((g) => g as Guide);
 guides.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-export function getAllGuides(): Guide[] {
+export const STATIC_GUIDES = guides;
+
+export async function getAllGuides(): Promise<Guide[]> {
+  try {
+    const apiGuides = await fetchGuides();
+    if (apiGuides.length > 0) return apiGuides;
+  } catch {
+    // Local Vite development does not have Pages Functions available.
+  }
   return guides;
 }
 
@@ -25,9 +34,9 @@ export function getGuideById(id: string): Guide | undefined {
   return guides.find((g) => g.id === id);
 }
 
-export function getSeriesList(): SeriesMeta[] {
+export function getSeriesList(sourceGuides: Guide[] = guides): SeriesMeta[] {
   const seriesMap = new Map<string, number>();
-  for (const g of guides) {
+  for (const g of sourceGuides) {
     seriesMap.set(g.series, (seriesMap.get(g.series) || 0) + 1);
   }
   return Array.from(seriesMap.entries())

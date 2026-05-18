@@ -1,2 +1,8 @@
 name = "roundtable"
 pages_build_output_dir = "dist"
+compatibility_date = "2024-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "roundtable-guides"
+database_id = "5a6f5c60-c926-4fa1-a53c-f2c97f090d7e"
