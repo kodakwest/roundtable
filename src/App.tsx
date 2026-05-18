@@ -189,10 +189,10 @@ function AuthenticatedApp() {
 
 function AuthLoading() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0b0d0e] text-[#e8e6e1]">
+    <div className="flex min-h-screen items-center justify-center bg-[var(--bg-base)] text-[var(--ink-primary)]">
       <div className="flex flex-col items-center gap-4">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#2a2d31] border-t-[#4da8da]" />
-        <div className="font-serif text-xl font-bold text-[#4da8da]">Roundtable</div>
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[var(--border-subtle)] border-t-[var(--accent)]" />
+        <div className="font-serif text-xl font-bold text-[var(--accent)]">Roundtable</div>
       </div>
     </div>
   );

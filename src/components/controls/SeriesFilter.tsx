@@ -15,8 +15,8 @@ export default function SeriesFilter() {
         className={clsx(
           "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all active:scale-95",
           selectedSeries === null
-            ? "border-[#4da8da] bg-[#4da8da]/10 text-[#4da8da]"
-            : "border-[#2a2d31] text-[#a0a0a5] hover:border-[#4da8da]/50 hover:text-[#a0a0a5]",
+            ? "border-[var(--accent)] bg-[var(--accent-muted)] text-[var(--accent)]"
+            : "border-[var(--border-subtle)] text-[var(--ink-secondary)] hover:border-[var(--accent)] hover:text-[var(--ink-primary)]",
         )}
       >
         All
@@ -28,8 +28,8 @@ export default function SeriesFilter() {
           className={clsx(
             "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all active:scale-95",
             selectedSeries === series.name
-              ? "border-[#4da8da] bg-[#4da8da]/10 text-[#4da8da]"
-              : "border-[#2a2d31] text-[#a0a0a5] hover:border-[#4da8da]/50 hover:text-[#a0a0a5]",
+              ? "border-[var(--accent)] bg-[var(--accent-muted)] text-[var(--accent)]"
+              : "border-[var(--border-subtle)] text-[var(--ink-secondary)] hover:border-[var(--accent)] hover:text-[var(--ink-primary)]",
           )}
         >
           {series.name} ({series.count})
