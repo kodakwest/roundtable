@@ -1,0 +1,43 @@
+{
+  "id": "finish-strong",
+  "title": "Battle of the Mind — Finish Strong",
+  "series": "Battle of the Mind",
+  "date": "2026-05-15",
+  "scriptureMap": "1 Timothy 1:18-19 · 2 Timothy 1:8-10, 1:12 · 2 Timothy 2:8-14 · 2 Timothy 3:10-13 · 2 Timothy 4:6-8, 4:16-18",
+  "anchorVerse": {
+    "reference": "1 Timothy 1:18-19",
+    "text": "I am giving you this command... so that by recalling them you may fight the battle well, holding on to faith and a good conscience."
+  },
+  "theme": "Finishing well requires suffering, faith, and a settled conviction that God stays faithful to the end.",
+  "framingSentence": "Paul is writing from prison at the end of his life, and he is not trying to impress anyone. He is showing what it looks like to finish faithful when the pressure is real, the losses are piling up, and the race is almost over.",
+  "sections": [
+    {
+      "title": "Provided to Finish",
+      "context": "If God is the one who called you, chained circumstances cannot cancel what He has already set in motion. Paul wrote from a Roman dungeon, but he never confused his chains with the gospel's reach. 2 Timothy 2:9 reminds us that while Paul was chained like a criminal, God's word is not chained. 2 Timothy 2:13 declares that even if we are faithless, he remains faithful, for he cannot disown himself.",
+      "questions": [
+        { "id": "fs-q1", "prompt": "Where in your life do circumstances feel like they're closing in? What would change if you believed God's word is not bound by your situation?" },
+        { "id": "fs-q2", "prompt": "'If we are faithless, he remains faithful.' When have you been the faithless one and discovered God hadn't moved?" }
+      ]
+    },
+    {
+      "title": "The Cost of Finishing",
+      "context": "Everyone who wants to live a godly life will face opposition. Paul's resume included persecutions and sufferings — not despite them, but through them. 2 Timothy 1:12 shows his settled conviction: 'I know whom I have believed, and am convinced that he is able to guard what I have entrusted to him until that day.'",
+      "questions": [
+        { "id": "fs-q3", "prompt": "The sermon opened with three people who finished poorly — a famous author, a pastor, a ministry leader. Not one planned to end that way. When does starting well feel easier than finishing well?" },
+        { "id": "fs-q4", "prompt": "Paul was convinced, not hopeful. Is there an area where you're still trying to talk yourself into faith?" }
+      ]
+    },
+    {
+      "title": "Poured Out for a Purpose",
+      "context": "Water poured on the ground can't be gathered back. Paul used that image for his own life in 2 Timothy 4:6-8: 'I am already being poured out like a drink offering... I have fought the good fight, I have finished the race, I have kept the faith.' And in 2 Timothy 4:16-18, even when everyone deserted him at his first defense, the Lord stood at his side and gave him strength.",
+      "questions": [
+        { "id": "fs-q5", "prompt": "What would it look like to live as if your life has already been poured out — every part given away?" },
+        { "id": "fs-q6", "prompt": "No one showed up for Paul. He forgave them and kept going. Who or what would you need to release in order to finish well?" }
+      ]
+    }
+  ],
+  "landing": {
+    "paragraph": "The battle Paul calls us to fight in 1 Timothy 1:18-19 is fought with faith and a good conscience — not a perfect life, but a poured-out one. The crown of righteousness isn't for those who started well. It's for those who long for His appearing and keep fighting to the end.",
+    "finalQuestion": "If your life ended today, what would be the unfinished business between you and God?"
+  }
+}

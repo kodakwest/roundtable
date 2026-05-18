@@ -4,12 +4,14 @@ import battleOfTheMindWomen from "../data/guides/battle-of-the-mind-women.json";
 import realFaith from "../data/guides/real-faith.json";
 import armorForTheMind from "../data/guides/armor-for-the-mind.json";
 import designedOnPurpose from "../data/guides/designed-on-purpose.json";
+import finishStrong from "../data/guides/finish-strong.json";
 
 const guideFiles = [
   battleOfTheMindWomen,
   realFaith,
   armorForTheMind,
   designedOnPurpose,
+  finishStrong,
 ] as unknown[];
 
 const guides: Guide[] = guideFiles.map((g) => g as Guide);
