@@ -8,13 +8,17 @@ import SeriesFilter from "./components/controls/SeriesFilter";
 import GuideCard from "./components/guides/GuideCard";
 import GuideView from "./components/guides/GuideView";
 import PrintGuide from "./components/PrintGuide";
+import { EcosystemNav } from "./components/EcosystemNav";
 
 export default function App() {
-  if (window.location.pathname.startsWith("/admin")) {
-    return <Admin />;
-  }
-
-  return <PublicApp />;
+  return (
+    <>
+      <EcosystemNav />
+      <div className="app-content">
+        {window.location.pathname.startsWith("/admin") ? <Admin /> : <PublicApp />}
+      </div>
+    </>
+  );
 }
 
 function PublicApp() {
