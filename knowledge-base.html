@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roundtable Knowledge Base</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0e0f0d;
+            --panel-bg: #171713;
+            --ink: #f2f0e8;
+            --ink-muted: #a1a1aa;
+            --gold: #d4a373;
+            --teal: #56b6a7;
+            --violet: #a78bfa;
+            --zinc: #94a3b8;
+            --border-color: #333330;
+            --code-bg: #000000;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--gold);
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+            overflow-x: auto;
+            position: relative;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            border: none;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: var(--panel-bg);
+            color: var(--ink);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--gold);
+            color: var(--bg-color);
+        }
+
+        .app-shell {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color: var(--panel-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .search-container {
+            margin-bottom: 1.5rem;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--ink);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--ink-muted);
+            display: block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+            background-color: rgba(212, 163, 115, 0.1);
+        }
+
+        .main-content {
+            padding: 3rem 4rem;
+            max-width: 1000px;
+        }
+
+        .status-strip {
+            background-color: var(--panel-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--teal);
+        }
+
+        .kb-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-heading {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .callout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .callout-card {
+            background-color: var(--panel-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .callout-card h3 {
+            font-size: 1rem;
+            color: var(--ink-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .callout-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--panel-bg);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+        }
+
+        .command-list {
+            margin-bottom: 2rem;
+        }
+
+        .command-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .command-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .timeline {
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.85rem;
+            top: 0.25rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: var(--teal);
+            border-radius: 50%;
+        }
+
+        .runtime-pill {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background-color: rgba(86, 182, 167, 0.2);
+            color: var(--teal);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--panel-bg);
+            color: var(--gold);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, background-color 0.2s;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--gold);
+            color: var(--bg-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-shell {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+                height: auto;
+                padding: 1rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Diagram Colors */
+        .diag-frontend { fill: rgba(212, 163, 115, 0.4); stroke: #d4a373; stroke-width: 2; }
+        .diag-backend { fill: rgba(86, 182, 167, 0.4); stroke: #56b6a7; stroke-width: 2; }
+        .diag-db { fill: rgba(167, 139, 250, 0.4); stroke: #a78bfa; stroke-width: 2; }
+        .diag-external { fill: rgba(148, 163, 184, 0.4); stroke: #94a3b8; stroke-width: 2; }
+        .diag-text { fill: var(--ink); font-family: 'Inter', sans-serif; font-size: 14px; }
+        .diag-title { fill: var(--ink); font-family: 'Inter', sans-serif; font-size: 16px; font-weight: bold; }
+        .diag-line { stroke: var(--ink-muted); stroke-width: 2; marker-end: url(#arrowhead); }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+    <aside class="sidebar">
+        <h2>Roundtable KB</h2>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search knowledge base...">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#data-model">Data Model</a></li>
+                <li><a href="#api">Pages Functions API</a></li>
+                <li><a href="#admin">Admin Interface</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#pipeline">Guide Pipeline</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#deployment">Deployment</a></li>
+                <li><a href="#commands">Commands</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="status-strip">
+            <div>
+                <strong>Project:</strong> Roundtable Sermon Guides
+            </div>
+            <div>
+                <span class="runtime-pill">v1.0</span> <a href="https://roundtable.logos-core.com" target="_blank">roundtable.logos-core.com</a>
+            </div>
+        </div>
+
+        <section id="overview" class="kb-section" data-keywords="overview guides series tech stack react zustand vite tailwind typescript d1 count">
+            <h2 class="section-heading">1. Overview</h2>
+            <p>Roundtable is a sermon discussion guide web application for Harvest Ridge Church. It allows users to browse, search, and view structured sermon discussion guides. Guides are stored in a Cloudflare D1 database (with static JSON fallback for development). An admin interface at <code>/admin</code> allows authors to paste markdown, parse it into the Guide schema via a Worker, preview/edit, and one-click publish to D1.</p>
+            
+            <div class="callout-grid">
+                <div class="callout-card">
+                    <h3>Guides Published</h3>
+                    <div class="value">Dynamic (D1)</div>
+                </div>
+                <div class="callout-card">
+                    <h3>Series Coverage</h3>
+                    <div class="value">Auto-extracted</div>
+                </div>
+                <div class="callout-card">
+                    <h3>Tech Stack</h3>
+                    <div class="value">React 19, Vite 8</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="kb-section" data-keywords="architecture diagram flow d1 cloudflare pages worker static json fallback backend frontend public admin">
+            <h2 class="section-heading">2. Architecture</h2>
+            <p>The system uses Cloudflare Pages for hosting static assets and Pages Functions for the API layer, connecting to a D1 database.</p>
+            
+            <div style="background: var(--panel-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); overflow-x: auto;">
+                <svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#a1a1aa" />
+                        </marker>
+                    </defs>
+                    
+                    <!-- User / Browser -->
+                    <rect x="50" y="30" width="700" height="130" rx="8" class="diag-external" />
+                    <text x="60" y="55" class="diag-title">User Browser</text>
+                    
+                    <rect x="70" y="70" width="300" height="70" rx="4" class="diag-frontend" />
+                    <text x="80" y="90" class="diag-title">Public (/*)</text>
+                    <text x="80" y="110" class="diag-text">- Browse, search, view guides</text>
+                    
+                    <rect x="430" y="70" width="300" height="70" rx="4" class="diag-frontend" />
+                    <text x="440" y="90" class="diag-title">Admin (/admin)</text>
+                    <text x="440" y="110" class="diag-text">- Login, list, parse, compose</text>
+                    
+                    <!-- Cloudflare Pages Edge -->
+                    <rect x="50" y="210" width="700" height="170" rx="8" class="diag-backend" />
+                    <text x="60" y="235" class="diag-title">Cloudflare Pages Edge</text>
+                    
+                    <rect x="70" y="250" width="230" height="110" rx="4" class="diag-backend" />
+                    <text x="80" y="270" class="diag-text font-bold">Pages Functions</text>
+                    <text x="80" y="295" class="diag-text">GET /api/guides</text>
+                    <text x="80" y="315" class="diag-text">POST /api/admin/parse</text>
+                    <text x="80" y="335" class="diag-text">POST /api/admin/guides</text>
+                    
+                    <rect x="340" y="250" width="180" height="110" rx="4" class="diag-db" />
+                    <text x="350" y="270" class="diag-title">D1 Database</text>
+                    <text x="350" y="295" class="diag-text">roundtable-guides</text>
+                    <text x="350" y="315" class="diag-text">guides table</text>
+                    
+                    <rect x="550" y="250" width="180" height="110" rx="4" class="diag-external" />
+                    <text x="560" y="270" class="diag-title">Static Assets</text>
+                    <text x="560" y="295" class="diag-text">dist/ directory</text>
+                    <text x="560" y="315" class="diag-text">JSON Fallback</text>
+                    
+                    <!-- Lines -->
+                    <line x1="220" y1="140" x2="185" y2="240" class="diag-line" />
+                    <line x1="580" y1="140" x2="185" y2="240" class="diag-line" />
+                    <line x1="300" y1="305" x2="330" y2="305" class="diag-line" />
+                </svg>
+            </div>
+        </section>
+
+        <section id="data-model" class="kb-section" data-keywords="data model type interface schema json markdown table sql sqlite finish strong">
+            <h2 class="section-heading">3. Data Model</h2>
+            
+            <h3>Guide Type Definition</h3>
+            <pre><code>export type GuideQuestion = { id: string; prompt: string; }
+export type GuideSection = { title: string; context: string; questions: GuideQuestion[]; }
+export type GuideLanding = { paragraph: string; finalQuestion: string; }
+export type SeriesMeta = { id: string; name: string; count: number; }
+export type Guide = {
+  id: string; title: string; series: string; date: string;
+  scriptureMap: string;
+  anchorVerse: { reference: string; text: string; };
+  theme: string; framingSentence: string;
+  sections: GuideSection[];
+  landing: GuideLanding;
+}</code></pre>
+
+            <h3>D1 Schema</h3>
+            <pre><code>CREATE TABLE IF NOT EXISTS guides (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL, series TEXT NOT NULL, date TEXT NOT NULL,
+  scripture_map TEXT NOT NULL,
+  anchor_reference TEXT NOT NULL, anchor_text TEXT NOT NULL,
+  theme TEXT NOT NULL, framing_sentence TEXT NOT NULL,
+  sections TEXT NOT NULL,  -- JSON array of sections
+  landing_paragraph TEXT NOT NULL, landing_question TEXT NOT NULL,
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now'))
+);</code></pre>
+
+            <h3>Markdown Format Reference</h3>
+            <pre><code># Discussion Guide: Battle of the Mind — Finish Strong
+**Battle of the Mind | May 15, 2026**
+
+> "I am giving you this command..." — 1 Timothy 1:18-19
+
+**Scripture:** 1 Tim 1:18-19 · 2 Tim 1:8-10, 1:12 · ...
+**Theme:** Finishing well requires suffering...
+
+Framing paragraph here...
+
+## Section One Title
+Context paragraph...
+- Question one?
+- Question two?
+
+## Landing the Plane
+Closing paragraph...
+**Final Question:** The closing question?</code></pre>
+        </section>
+
+        <section id="api" class="kb-section" data-keywords="api endpoints pages functions get post parse guides auth admin key request response curl">
+            <h2 class="section-heading">4. Pages Functions API</h2>
+            
+            <div class="command-list">
+                <div class="command-item">
+                    <h4><span class="runtime-pill" style="background: rgba(86,182,167,0.2); color: var(--teal)">GET</span> /api/guides</h4>
+                    <p>Returns all guides from D1 sorted by date DESC.</p>
+                    <ul class="checklist">
+                        <li><strong>Auth:</strong> None</li>
+                        <li><strong>Response:</strong> <code>{ guides: Guide[] }</code></li>
+                    </ul>
+                    <pre><code>curl https://roundtable.logos-core.com/api/guides</code></pre>
+                </div>
+
+                <div class="command-item">
+                    <h4><span class="runtime-pill" style="background: rgba(212,163,115,0.2); color: var(--gold)">POST</span> /api/admin/parse</h4>
+                    <p>Parses markdown via regex into the Guide schema.</p>
+                    <ul class="checklist">
+                        <li><strong>Auth:</strong> None</li>
+                        <li><strong>Request:</strong> <code>{ markdown: string }</code></li>
+                        <li><strong>Response:</strong> <code>{ guide: GuideJSON, confidence: number, warnings: string[] }</code></li>
+                    </ul>
+                    <pre><code>curl -X POST https://roundtable.logos-core.com/api/admin/parse   -H "Content-Type: application/json"   -d '{"markdown":"# Guide Title..."}'</code></pre>
+                </div>
+
+                <div class="command-item">
+                    <h4><span class="runtime-pill" style="background: rgba(212,163,115,0.2); color: var(--gold)">POST</span> /api/admin/guides</h4>
+                    <p>Validates and saves a guide into D1.</p>
+                    <ul class="checklist">
+                        <li><strong>Auth:</strong> <code>X-Admin-Key: &lt;key&gt;</code></li>
+                        <li><strong>Request:</strong> <code>{ guide: GuideJSON }</code></li>
+                        <li><strong>Response:</strong> <code>{ success: true, id: string }</code></li>
+                    </ul>
+                    <pre><code>curl -X POST https://roundtable.logos-core.com/api/admin/guides   -H "Content-Type: application/json"   -H "X-Admin-Key: your_admin_key"   -d '{"guide": {...}}'</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="admin" class="kb-section" data-keywords="admin interface login dashboard workflow paste parse preview save compose guidecomposer">
+            <h2 class="section-heading">5. Admin Interface</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>1. Auth (AdminLogin):</strong> Uses a shared-key gate (<code>env.ADMIN_KEY</code>), saved in sessionStorage.
+                </div>
+                <div class="timeline-item">
+                    <strong>2. Dashboard (AdminDashboard):</strong> Lists current guides and provides an "Add New Guide" entry point.
+                </div>
+                <div class="timeline-item">
+                    <strong>3. Paste & Parse:</strong> GuideComposer provides a spacious, writing-tool feel text area for markdown.
+                </div>
+                <div class="timeline-item">
+                    <strong>4. Preview & Edit:</strong> Converts markdown to an editable preview form with confidence scoring.
+                </div>
+                <div class="timeline-item">
+                    <strong>5. Publish:</strong> One-click publish to D1, immediately live on the site.
+                </div>
+            </div>
+        </section>
+
+        <section id="components" class="kb-section" data-keywords="components react view card print block app store search filter routing useroundtablestore">
+            <h2 class="section-heading">6. Components</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>App.tsx</code></td>
+                            <td>Routing logic (<code>/admin</code> vs public <code>/*</code>), auth checks.</td>
+                        </tr>
+                        <tr>
+                            <td><code>GuideCard.tsx</code></td>
+                            <td>Card item in list view (title, series, date).</td>
+                        </tr>
+                        <tr>
+                            <td><code>GuideView.tsx</code></td>
+                            <td>Full guide display (sections, questions, landing).</td>
+                        </tr>
+                        <tr>
+                            <td><code>SectionBlock.tsx</code></td>
+                            <td>Individual section renderer within a guide.</td>
+                        </tr>
+                        <tr>
+                            <td><code>SearchBar.tsx</code> / <code>SeriesFilter.tsx</code></td>
+                            <td>Text search and series filtering components.</td>
+                        </tr>
+                        <tr>
+                            <td><code>PrintGuide.tsx</code></td>
+                            <td>Print-optimized layout component.</td>
+                        </tr>
+                        <tr>
+                            <td><code>useRoundtableStore.ts</code></td>
+                            <td>Zustand store for state (guides, views, loading, search).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="pipeline" class="kb-section" data-keywords="guide pipeline parse regex worker confidence cli import python script static d1 flow">
+            <h2 class="section-heading">7. Guide Pipeline</h2>
+            <ul class="checklist">
+                <li><strong>CLI Import:</strong> <code>scripts/import-guide.py</code> reads markdown, generates JSON to <code>src/data/guides/</code>.</li>
+                <li><strong>Worker Parser:</strong> <code>functions/api/admin/parse.ts</code> ports the python logic to TS regex. Confidence scoring ensures data quality.</li>
+                <li><strong>Static JSON Fallback:</strong> If API fails or in dev mode without functions, <code>src/lib/guideData.ts</code> loads static JSONs.</li>
+                <li><strong>D1 Storage Flow:</strong> Valid JSON is inserted into <code>guides</code> table. <code>sections</code> array is stringified to JSON in the DB.</li>
+            </ul>
+        </section>
+
+        <section id="configuration" class="kb-section" data-keywords="configuration wrangler toml vite config package json scripts d1 bindings build dev">
+            <h2 class="section-heading">8. Configuration</h2>
+            
+            <h3>wrangler.toml</h3>
+            <pre><code>name = "roundtable"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-10-01"
+[[d1_databases]]
+binding = "DB"
+database_name = "roundtable-guides"
+database_id = "5a6f5c60-c926-4fa1-a53c-f2c97f090d7e"</code></pre>
+
+            <h3>vite.config.ts</h3>
+            <pre><code>import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  base: "",
+})</code></pre>
+        </section>
+
+        <section id="deployment" class="kb-section" data-keywords="deployment git push github cloudflare pages domain environment secret admin key roundtable">
+            <h2 class="section-heading">9. Deployment</h2>
+            <ul class="checklist">
+                <li><strong>Auto-deploy:</strong> Git push to main branch triggers Cloudflare Pages build.</li>
+                <li><strong>Domain:</strong> <code>roundtable.logos-core.com</code> (also roundtable-cz3.pages.dev)</li>
+                <li><strong>Database:</strong> D1 <code>roundtable-guides</code> (id: 5a6f5c60-c926-4fa1-a53c-f2c97f090d7e)</li>
+                <li><strong>Secrets:</strong> <code>env.ADMIN_KEY</code> must be set in Cloudflare via dashboard or wrangler.</li>
+            </ul>
+        </section>
+
+        <section id="commands" class="kb-section" data-keywords="commands npm run dev build start seed wrangler d1 execute secret put copy">
+            <h2 class="section-heading">10. Commands</h2>
+            
+            <div class="command-list">
+                <div class="command-item">
+                    <h4>Dev Server</h4>
+                    <pre><code>npm run dev</code></pre>
+                </div>
+                <div class="command-item">
+                    <h4>Build</h4>
+                    <pre><code>npm run build</code></pre>
+                </div>
+                <div class="command-item">
+                    <h4>Seed D1 Database (Remote)</h4>
+                    <pre><code>wrangler d1 execute roundtable-guides --file=seed.sql --remote</code></pre>
+                </div>
+                <div class="command-item">
+                    <h4>Set Admin Key</h4>
+                    <pre><code>wrangler pages secret put ADMIN_KEY --project-name roundtable</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="scroll-top" id="scrollTop">↑</div>
+
+<script>
+    // Copy functionality
+    document.querySelectorAll('pre').forEach(pre => {
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'Copy';
+        pre.appendChild(btn);
+        
+        btn.addEventListener('click', () => {
+            const code = pre.querySelector('code');
+            if(code) {
+                navigator.clipboard.writeText(code.innerText).then(() => {
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = 'Copy', 2000);
+                });
+            } else {
+                const text = Array.from(pre.childNodes)
+                    .filter(n => n.nodeType === Node.TEXT_NODE || (n.tagName && n.tagName !== 'BUTTON'))
+                    .map(n => n.textContent)
+                    .join('');
+                navigator.clipboard.writeText(text.trim()).then(() => {
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = 'Copy', 2000);
+                });
+            }
+        });
+    });
+
+    // Search filter
+    const searchInput = document.getElementById('search-input');
+    const sections = document.querySelectorAll('.kb-section');
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        
+        sections.forEach(section => {
+            const keywords = section.getAttribute('data-keywords') || '';
+            const text = section.textContent.toLowerCase();
+            if (keywords.includes(query) || text.includes(query)) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+    });
+
+    // Scroll spy nav
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Scroll to top
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
