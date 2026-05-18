@@ -1,7 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import { useRoundtableStore } from "./store/useRoundtableStore";
 import { getGuideById } from "./lib/guideData";
+import { checkAuth, redirectToLogin } from "./lib/authCheck";
 import SearchBar from "./components/controls/SearchBar";
 import SeriesFilter from "./components/controls/SeriesFilter";
 import GuideCard from "./components/guides/GuideCard";
@@ -9,6 +10,25 @@ import GuideView from "./components/guides/GuideView";
 import PrintGuide from "./components/PrintGuide";
 
 export default function App() {
+  const [authState, setAuthState] = useState<"loading" | "authenticated" | "unauthenticated">("loading");
+
+  useEffect(() => {
+    checkAuth().then((user) => {
+      if (user) {
+        setAuthState("authenticated");
+      } else {
+        setAuthState("unauthenticated");
+        redirectToLogin();
+      }
+    });
+  }, []);
+
+  if (authState !== "authenticated") return <AuthLoading />;
+
+  return <AuthenticatedApp />;
+}
+
+function AuthenticatedApp() {
   const guides = useRoundtableStore((s) => s.guides);
   const view = useRoundtableStore((s) => s.view);
   const selectedGuideId = useRoundtableStore((s) => s.selectedGuideId);
@@ -137,5 +157,16 @@ export default function App() {
         </main>
       </div>
     </>
+  );
+}
+
+function AuthLoading() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-[#0b0d0e] text-[#e8e6e1]">
+      <div className="flex flex-col items-center gap-4">
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#2a2d31] border-t-[#d4af37]" />
+        <div className="font-serif text-xl font-bold text-[#d4af37]">LogOS</div>
+      </div>
+    </div>
   );
 }
