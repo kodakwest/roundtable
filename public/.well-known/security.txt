@@ -1,0 +1,4 @@
+Contact: mailto:no-reply@logos-core.com
+Preferred-Languages: en
+Canonical: https://roundtable.logos-core.com/.well-known/security.txt
+Expires: 2027-05-20T00:00:00Z

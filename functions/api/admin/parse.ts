@@ -27,7 +27,16 @@ type ParseResult = {
   warnings: string[];
 };
 
-export const onRequestPost: PagesFunction = async ({ request }) => {
+type Env = {
+  ADMIN_KEY: string;
+};
+
+export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+  const adminKey = request.headers.get("X-Admin-Key");
+  if (!env.ADMIN_KEY || adminKey !== env.ADMIN_KEY) {
+    return json({ error: "Invalid admin key" }, 401);
+  }
+
   try {
     const body = (await request.json()) as { markdown?: unknown };
     if (typeof body.markdown !== "string" || !body.markdown.trim()) {
